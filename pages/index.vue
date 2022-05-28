@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="search">
-      <v-text-field v-model="search" label="search" outlined dense placeholder="simple search"></v-text-field>
+      <v-text-field v-model="search" label="search" outlined dense placeholder="simple search" />
     </div>
     <v-row justify="center" align="center">
       <v-col cols="12" md="2" sm="3" v-for="(pokemon, i) in filteredList" :key="i">

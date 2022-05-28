@@ -76,7 +76,6 @@ export default {
     }),
 
     AddPokemon() {
-      console.log('AddPokemon')
       this.addPokemonTeam(this.pokemon)
     },
   },
