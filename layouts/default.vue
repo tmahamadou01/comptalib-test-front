@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <Nav class="mb-12" :team="team" />
     <v-main>
       <v-container>
         <Nuxt />
@@ -9,8 +10,23 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
-  name: 'DefaultLayout'
+  name: 'DefaultLayout',
+  computed: {
+    ...mapGetters({
+      team: 'team/team',
+    }),
+  },
+  mounted() {
+    this.setTeam()
+  },
+  methods: {
+    ...mapActions({
+      setTeam: 'team/setTeam',
+    }),
+  },
 }
 </script>
 
