@@ -22,12 +22,13 @@ export const actions = {
         const team = JSON.parse(localStorage.getItem("team") || "[]");
         if (team.length > 0) {
             team.push(pokemon);
-                localStorage.setItem("team", JSON.stringify(team));
-                dispatch('setTeam')
+            localStorage.setItem("team", JSON.stringify(team));
+            dispatch('setTeam')
         } else {
             localStorage.setItem("team", JSON.stringify([pokemon]));
             dispatch('setTeam')
         }
+        alert('Added success')
     },
     deletePokemon({ state, dispatch }, index) {
         const nTeam = [...state.team].filter((_, i) => i !== index)

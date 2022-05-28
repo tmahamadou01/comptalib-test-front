@@ -31,7 +31,7 @@
           </v-toolbar-items>
         </v-toolbar>
         <v-card-text class="mt-5">
-          <p v-if="!team.length"> Your team is empty, add pokemon</p>
+          <p v-if="!team.length">Your team is empty, add pokemon</p>
           <v-row justify="center" align="center" v-else>
             <v-col
               cols="12"
@@ -74,8 +74,11 @@ export default {
       this.dialog = true
     },
     handleDeletePokemon(index) {
-        console.log('delete');
-      this.deletePokemon(index)
+      const result = confirm('Do you want to delete this Pokemon ?')
+      if (result) {
+        this.deletePokemon(index)
+        alert('Deleted success')
+      }
     },
   },
 }

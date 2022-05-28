@@ -1,9 +1,14 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" md="2" sm="3" v-for="(pokemon, i) in pokemons" :key="i">
-      <PokemonCard :pokemon="pokemon" />
-    </v-col>
-  </v-row>
+  <div>
+    <div class="search">
+      <v-text-field v-model="search" label="search" outlined dense placeholder="simple search"></v-text-field>
+    </div>
+    <v-row justify="center" align="center">
+      <v-col cols="12" md="2" sm="3" v-for="(pokemon, i) in filteredList" :key="i">
+        <PokemonCard :pokemon="pokemon" />
+      </v-col>
+    </v-row>
+  </div>
 </template>
 
 <script>
@@ -13,7 +18,15 @@ export default {
     pokemons: [],
     index: 1,
     offset: 20,
+    search: '',
   }),
+  computed: {
+    filteredList() {
+      return this.pokemons.filter((pokemon) => {
+        return this.search.toLowerCase().split('').every(v => pokemon.name.toLowerCase().includes(v))
+      })
+    }
+  },
   mounted() {
     this.fetchPokemons()
     this.loadMorePokemons()
